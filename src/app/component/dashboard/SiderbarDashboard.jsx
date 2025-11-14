@@ -26,7 +26,7 @@ const SiderbarDashboard = () => {
             Điểm checkin
           </a>
            <a
-            href="/dashboard/#"
+            href="/dashboard/service"
             className="block px-4 py-2 rounded-md hover:bg-blue-100 hover:text-blue-600 transition"
           >
            Dịch vụ
@@ -43,6 +43,7 @@ const SiderbarDashboard = () => {
           >
             Sổ tay du lịch
           </a>
+         
           <a
             href="/dashboard/contact"
             className="block px-4 py-2 rounded-md hover:bg-blue-100 hover:text-blue-600 transition"

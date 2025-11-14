@@ -1,8 +1,11 @@
+import TableVissit from '@/app/component/dashboard/visit/TableVissit'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>nodepage</div>
+    <div>
+      <TableVissit/>
+    </div>
   )
 }
 

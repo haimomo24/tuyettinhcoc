@@ -1,65 +1,92 @@
-import React from 'react'
+"use client";
+import React, { useEffect, useState } from "react";
 
 const TableCheckin = () => {
+  const [data, setData] = useState([]);
+
+  // Lấy dữ liệu
+  const fetchData = async () => {
+    const res = await fetch("/api/checkin");
+    const json = await res.json();
+    setData(json);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  // Xoá record
+  const handleDelete = async (id) => {
+    if (!confirm("Bạn có chắc muốn xoá mục này không?")) return;
+
+    const res = await fetch(`/api/checkin/${id}`, {
+      method: "DELETE",
+    });
+
+    if (res.ok) {
+      alert("Đã xoá thành công!");
+      fetchData();
+    } else {
+      alert("Xoá thất bại!");
+    }
+  };
+
   return (
-    <div className="relative overflow-x-auto">
-  <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
-    <thead className="text-xs text-gray-700 uppercase bg-gray-50  ">
-        <h2>Quản lý điểm tham quan</h2>
-      <tr>
-        <th scope="col" className="px-6 py-3">
-          Tên điểm 
-        </th>
-        <th scope="col" className="px-6 py-3">
-          THông tin 
-        </th>
-        <th scope="col" className="px-6 py-3">
-          Bài viết
-        </th>
-        <th scope="col" className="px-6 py-3">
-          thao tác
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr className="bg-white border-b   border-gray-200">
-        <th
-          scope="row"
-          className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
+    <div className="p-4">
+      <div className="flex justify-between mb-3">
+        <h2 className="text-xl font-bold">Quản lý điểm tham quan</h2>
+        <a
+          href="/dashboard/checkin/add"
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
         >
-          Apple MacBook Pro 17"
-        </th>
-        <td className="px-6 py-4">Silver</td>
-        <td className="px-6 py-4">Laptop</td>
-        <td className="px-6 py-4">$2999</td>
-      </tr>
-      <tr className="bg-white border-b   border-gray-200">
-        <th
-          scope="row"
-          className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-        >
-          Microsoft Surface Pro
-        </th>
-        <td className="px-6 py-4">White</td>
-        <td className="px-6 py-4">Laptop PC</td>
-        <td className="px-6 py-4">$1999</td>
-      </tr>
-      <tr className="bg-white ">
-        <th
-          scope="row"
-          className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
-        >
-          Magic Mouse 2
-        </th>
-        <td className="px-6 py-4">Black</td>
-        <td className="px-6 py-4">Accessories</td>
-        <td className="px-6 py-4">$99</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+          + Thêm mới
+        </a>
+      </div>
 
-  )
-}
+      <div className="relative overflow-x-auto bg-white rounded shadow">
+        <table className="w-full text-sm text-left text-gray-500">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-100">
+            <tr>
+              <th className="px-6 py-3">Tên điểm</th>
+              <th className="px-6 py-3">Thông tin</th>
+              <th className="px-6 py-3">Bài viết</th>
+              <th className="px-6 py-3">Thao tác</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.length === 0 && (
+              <tr>
+                <td colSpan="4" className="text-center py-4 text-gray-600">
+                  Không có dữ liệu
+                </td>
+              </tr>
+            )}
+            {data.map((item) => (
+              <tr key={item.id} className="bg-white border-b hover:bg-gray-50">
+                <td className="px-6 py-4 font-medium text-gray-900">{item.name}</td>
+                <td className="px-6 py-4">{item.title_1?.slice(0, 50)}...</td>
+                <td className="px-6 py-4">{item.title_1_en?.slice(0, 50)}...</td>
+                <td className="px-6 py-4 flex gap-3">
+                  <a
+                    href={`/dashboard/checkin/edit/${item.id}`}
+                    className="text-blue-600 hover:underline"
+                  >
+                    Sửa
+                  </a>
+                  <button
+                    onClick={() => handleDelete(item.id)}
+                    className="text-red-600 hover:underline"
+                  >
+                    Xoá
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
 
-export default TableCheckin
+export default TableCheckin;
