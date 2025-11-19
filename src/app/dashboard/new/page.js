@@ -1,7 +1,9 @@
 import BlogTable from '@/app/component/dashboard/blog/BlogTable'
+import { useAuth } from '@/hooks/useAuth'
 import React from 'react'
 
 const page = () => {
+ 
   return (
     <div>
       <BlogTable/>

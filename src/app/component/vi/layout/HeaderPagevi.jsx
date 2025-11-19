@@ -23,7 +23,7 @@ const HeaderPagevi = () => {
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6">
         {/* Bên trái */}
         <nav className="flex gap-30 text-gray-700 font-medium">
-          <a href="#" className="hover:text-blue-600  font-semibold  text-[18px] transition">
+          <a href="/vi" className="hover:text-blue-600  font-semibold  text-[18px] transition">
            TRANG CHỦ
           </a>
           <a href="#" className="hover:text-blue-600  font-semibold  text-[18px] transition">
@@ -36,7 +36,7 @@ const HeaderPagevi = () => {
 
         {/* Logo ở giữa */}
         <div className="text-3xl font-bold text-blue-700 tracking-wide">
-          <a href="#">
+          <a href="/">
             <img
               src="/image/logo/505107164797192833.jpg"
               alt="Logo"
@@ -50,7 +50,7 @@ const HeaderPagevi = () => {
           <a href="#" className="hover:text-blue-600  font-semibold  text-[18px] transition">
             TIN TỨC
           </a>
-          <a href="#" className="hover:text-blue-600  font-semibold  text-[18px] transition">
+          <a href="/vi/contact" className="hover:text-blue-600  font-semibold  text-[18px] transition">
             LIÊN HỆ
           </a>
           <a href="/en" className="hover:text-blue-600   text-[15px] transition">

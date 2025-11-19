@@ -1,7 +1,7 @@
 "use client";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-export default function VisitDetailClient({ id }) {
+const CheckinDetail = ({ id }) => {   // 🟢 NHẬN ID TỪ PROPS
   const [visit, setVisit] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -10,7 +10,7 @@ export default function VisitDetailClient({ id }) {
 
     const fetchVisit = async () => {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/visit/${id}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/checkin/${id}`);
         if (!res.ok) throw new Error("Không lấy được dữ liệu");
         const data = await res.json();
         setVisit(data);
@@ -25,24 +25,31 @@ export default function VisitDetailClient({ id }) {
   }, [id]);
 
   if (loading)
-    return <div className="text-center py-20 text-gray-500">Đang tải dữ liệu...</div>;
-  if (!visit) return <div className="text-center py-20 text-gray-500">Không tìm thấy dữ liệu</div>;
+    return (
+      <div className="text-center py-20 text-gray-500">
+        Đang tải dữ liệu...
+      </div>
+    );
 
-  // Gom các section (title + image) để hiển thị từng phần
+  if (!visit)
+    return (
+      <div className="text-center py-20 text-gray-500">
+        Không tìm thấy dữ liệu
+      </div>
+    );
+
   const sections = [
     { title: visit.title_1, image: visit.image_1 },
     { title: visit.title_2, image: visit.image_2 },
     { title: visit.title_3, image: visit.image_3 },
     { title: visit.title_4, image: visit.image_4 },
-  ].filter(section => section.title || section.image);
+  ].filter((section) => section.title || section.image);
 
   return (
     <>
-      {/* Spacer để header fixed không che phần đầu */}
       <div className="h-[100px] w-full"></div>
 
       <div className="max-w-6xl mx-auto px-4 py-8 lg:grid lg:grid-cols-3 lg:gap-8">
-        {/* Bài chính */}
         <article className="lg:col-span-2 space-y-8">
           <h1 className="text-4xl font-bold leading-tight text-gray-900 mb-6 border-b pb-4">
             {visit.name}
@@ -51,11 +58,13 @@ export default function VisitDetailClient({ id }) {
           {sections.map((section, index) => (
             <div key={index} className="space-y-4">
               {section.title && (
-                <p className="text-lg leading-7 text-gray-800 text-justify">{section.title}</p>
+                <p className="text-lg leading-7 text-gray-800 text-justify">
+                  {section.title}
+                </p>
               )}
               {section.image && (
                 <img
-                  src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/visit/${section.image}`}
+                  src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/checkin/${section.image}`}
                   alt={`Ảnh ${index + 1}`}
                   className="w-full h-auto rounded-lg shadow-md border"
                 />
@@ -63,15 +72,22 @@ export default function VisitDetailClient({ id }) {
             </div>
           ))}
 
-          <div className="text-right mt-10 italic text-gray-600">— Kết thúc bài viết —</div>
+          <div className="text-right mt-10 italic text-gray-600">
+            — Kết thúc bài viết —
+          </div>
         </article>
 
-        {/* Sidebar placeholder */}
         <aside className="bg-gray-50 p-4 rounded-xl shadow-sm">
-          <h2 className="text-lg font-semibold border-b pb-2 mb-4">Các điểm tham quan khác</h2>
-          <p className="text-gray-500 text-sm">Các điểm khác sẽ hiển thị ở đây.</p>
+          <h2 className="text-lg font-semibold border-b pb-2 mb-4">
+            Các điểm tham quan khác
+          </h2>
+          <p className="text-gray-500 text-sm">
+            Các điểm khác sẽ hiển thị ở đây.
+          </p>
         </aside>
       </div>
     </>
   );
-}
+};
+
+export default CheckinDetail;

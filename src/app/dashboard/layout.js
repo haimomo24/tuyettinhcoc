@@ -11,20 +11,18 @@ export const metadata = {
   },
 };
 
-export default function Dashboard({ children }) {
+export default function DashboardLayout({ children }) {
   return (
-    <html lang="vi">
-      <body className="bg-gray-100 min-h-screen">
-        {/* Sidebar cố định */}
-        <SiderbarDashboard />
+    <div className="bg-gray-100 min-h-screen flex">
+      {/* Sidebar */}
+      <SiderbarDashboard />
 
-        {/* Nội dung chính */}
-        <main className="pl-64 p-6"> 
-          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-200 min-h-[95vh]">
-            {children}
-          </div>
-        </main>
-      </body>
-    </html>
+      {/* Main content */}
+      <main className="flex-1 p-6 ml-64">
+        <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-200 min-h-[95vh]">
+          {children}
+        </div>
+      </main>
+    </div>
   );
 }

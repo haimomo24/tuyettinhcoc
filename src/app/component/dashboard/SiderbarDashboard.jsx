@@ -1,6 +1,19 @@
+"use client";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 const SiderbarDashboard = () => {
+  const router = useRouter();
+
+  const handleLogout = () => {
+    // Xóa dữ liệu user/token khỏi localStorage
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+
+    // Chuyển về trang login
+    router.push("/login");
+  };
+
   return (
     <aside className="w-64 bg-white shadow-md p-4 flex flex-col justify-between fixed left-0 top-0 h-screen">
       <div>
@@ -25,11 +38,11 @@ const SiderbarDashboard = () => {
           >
             Điểm checkin
           </a>
-           <a
+          <a
             href="/dashboard/service"
             className="block px-4 py-2 rounded-md hover:bg-blue-100 hover:text-blue-600 transition"
           >
-           Dịch vụ
+            Dịch vụ
           </a>
           <a
             href="/dashboard/new"
@@ -43,7 +56,6 @@ const SiderbarDashboard = () => {
           >
             Sổ tay du lịch
           </a>
-         
           <a
             href="/dashboard/contact"
             className="block px-4 py-2 rounded-md hover:bg-blue-100 hover:text-blue-600 transition"
@@ -54,7 +66,10 @@ const SiderbarDashboard = () => {
       </div>
 
       <div className="border-t pt-4 mt-6">
-        <button className="w-full text-left px-4 py-2 text-red-500 hover:bg-red-100 rounded-md">
+        <button
+          onClick={handleLogout}
+          className="w-full text-left px-4 py-2 text-red-500 hover:bg-red-100 rounded-md"
+        >
           Đăng xuất
         </button>
       </div>

@@ -3,35 +3,47 @@ import React, { useEffect, useState } from "react";
 
 const BlogTable = () => {
   const [data, setData] = useState([]);
-  
-    // Lấy dữ liệu
-    const fetchData = async () => {
-      const res = await fetch("/api/blog");
-      const json = await res.json();
-      setData(json);
-    };
-  
-    useEffect(() => {
-      fetchData();
-    }, []);
-  
-    // Xoá record
-    const handleDelete = async (id) => {
-      if (!confirm("Bạn có chắc muốn xoá mục này không?")) return;
-  
-      const res = await fetch(`/api/blog/${id}`, {
-        method: "DELETE",
-      });
-  
-      if (res.ok) {
-        alert("Đã xoá thành công!");
-        fetchData();
-      } else {
-        alert("Xoá thất bại!");
-      }
-    };
+   
+   const API_URL = process.env.NEXT_PUBLIC_API_URL; // http://localhost:5000/api
+   const VISIT_ENDPOINT = `${API_URL}/api/new`;
+ 
+   // Lấy dữ liệu
+   const fetchData = async () => {
+     try {
+       const res = await fetch(VISIT_ENDPOINT);
+       const json = await res.json();
+       setData(json);
+     } catch (err) {
+       console.error("Lỗi khi lấy dữ liệu:", err);
+     }
+   };
+ 
+   useEffect(() => {
+     fetchData();
+   }, [VISIT_ENDPOINT]);
+ 
+   // Xoá record
+   const handleDelete = async (id) => {
+     if (!confirm("Bạn có chắc muốn xoá mục này không?")) return;
+ 
+     try {
+       const res = await fetch(`${VISIT_ENDPOINT}/${id}`, {
+         method: "DELETE",
+       });
+ 
+       if (res.ok) {
+         alert("Đã xoá thành công!");
+         fetchData();
+       } else {
+         alert("Xoá thất bại!");
+       }
+     } catch (err) {
+       console.error("Lỗi khi xoá:", err);
+       alert("Xoá thất bại!");
+     }
+   };
   return (
-     <div className="p-4">
+    <div className="p-4">
       <div className="flex justify-between mb-3">
         <h2 className="text-xl font-bold">Quản lý điểm tham quan</h2>
         <a
@@ -47,8 +59,8 @@ const BlogTable = () => {
           <thead className="text-xs text-gray-700 uppercase bg-gray-100">
             <tr>
               <th className="px-6 py-3">Tên điểm</th>
-              <th className="px-6 py-3">Thông tin</th>
-              <th className="px-6 py-3">Bài viết</th>
+              <th className="px-6 py-3">Bài viết (vi)</th>
+              <th className="px-6 py-3">Bài viết (en)</th>
               <th className="px-6 py-3">Thao tác</th>
             </tr>
           </thead>
@@ -67,7 +79,7 @@ const BlogTable = () => {
                 <td className="px-6 py-4">{item.title_1_en?.slice(0, 50)}...</td>
                 <td className="px-6 py-4 flex gap-3">
                   <a
-                    href={`/dashboard/blog/edit/${item.id}`}
+                    href={`/dashboard/new/edit/${item.id}`}
                     className="text-blue-600 hover:underline"
                   >
                     Sửa

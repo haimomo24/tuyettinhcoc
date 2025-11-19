@@ -1,19 +1,10 @@
 "use client";
-import React, { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useAuth } from "@/hooks/useAuth";
+import React from "react";
 
-const Page = () => {
-  const router = useRouter();
 
-  useEffect(() => {
-    // Lấy token từ localStorage
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      // Nếu chưa login → chuyển về /login
-      router.replace("/login");
-    }
-  }, [router]);
+const DashboardPage = () => {
+  useAuth(); 
 
   return (
     <div className="p-10">
@@ -23,4 +14,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default DashboardPage;

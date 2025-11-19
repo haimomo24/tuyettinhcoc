@@ -1,43 +1,43 @@
 "use client";
 import { useEffect, useState } from "react";
 
-export default function VisitDetailClient({ id }) {
-  const [visit, setVisit] = useState(null);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if (!id) return;
-
-    const fetchVisit = async () => {
-      try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/visit/${id}`);
-        if (!res.ok) throw new Error("Không lấy được dữ liệu");
-        const data = await res.json();
-        setVisit(data);
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchVisit();
-  }, [id]);
-
-  if (loading)
-    return <div className="text-center py-20 text-gray-500">Đang tải dữ liệu...</div>;
-  if (!visit) return <div className="text-center py-20 text-gray-500">Không tìm thấy dữ liệu</div>;
-
-  // Gom các section (title + image) để hiển thị từng phần
-  const sections = [
-    { title: visit.title_1, image: visit.image_1 },
-    { title: visit.title_2, image: visit.image_2 },
-    { title: visit.title_3, image: visit.image_3 },
-    { title: visit.title_4, image: visit.image_4 },
-  ].filter(section => section.title || section.image);
-
+export default function NewDetail ({ id }) {
+      const [visit, setVisit] = useState(null);
+      const [loading, setLoading] = useState(true);
+    
+      useEffect(() => {
+        if (!id) return;
+    
+        const fetchVisit = async () => {
+          try {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/new/${id}`);
+            if (!res.ok) throw new Error("Không lấy được dữ liệu");
+            const data = await res.json();
+            setVisit(data);
+          } catch (err) {
+            console.error(err);
+          } finally {
+            setLoading(false);
+          }
+        };
+    
+        fetchVisit();
+      }, [id]);
+    
+      if (loading)
+        return <div className="text-center py-20 text-gray-500">Đang tải dữ liệu...</div>;
+      if (!visit) return <div className="text-center py-20 text-gray-500">Không tìm thấy dữ liệu</div>;
+    
+      // Gom các section (title + image) để hiển thị từng phần
+      const sections = [
+        { title: visit.title_1, image: visit.image_1 },
+        { title: visit.title_2, image: visit.image_2 },
+        { title: visit.title_3, image: visit.image_3 },
+        { title: visit.title_4, image: visit.image_4 },
+      ].filter(section => section.title || section.image);
   return (
-    <>
+      <>
       {/* Spacer để header fixed không che phần đầu */}
       <div className="h-[100px] w-full"></div>
 
@@ -55,7 +55,7 @@ export default function VisitDetailClient({ id }) {
               )}
               {section.image && (
                 <img
-                  src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/visit/${section.image}`}
+                  src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/new/${section.image}`}
                   alt={`Ảnh ${index + 1}`}
                   className="w-full h-auto rounded-lg shadow-md border"
                 />

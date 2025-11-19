@@ -1,32 +1,44 @@
 "use client";
 import React, { useEffect, useState } from "react";
 
-const TableCheckin = () => {
+const TableVissit = () => {
   const [data, setData] = useState([]);
+  
+  const API_URL = process.env.NEXT_PUBLIC_API_URL; // http://localhost:5000/api
+  const VISIT_ENDPOINT = `${API_URL}/api/checkin`;
 
   // Lấy dữ liệu
   const fetchData = async () => {
-    const res = await fetch("/api/checkin");
-    const json = await res.json();
-    setData(json);
+    try {
+      const res = await fetch(VISIT_ENDPOINT);
+      const json = await res.json();
+      setData(json);
+    } catch (err) {
+      console.error("Lỗi khi lấy dữ liệu:", err);
+    }
   };
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [VISIT_ENDPOINT]);
 
   // Xoá record
   const handleDelete = async (id) => {
     if (!confirm("Bạn có chắc muốn xoá mục này không?")) return;
 
-    const res = await fetch(`/api/checkin/${id}`, {
-      method: "DELETE",
-    });
+    try {
+      const res = await fetch(`${VISIT_ENDPOINT}/${id}`, {
+        method: "DELETE",
+      });
 
-    if (res.ok) {
-      alert("Đã xoá thành công!");
-      fetchData();
-    } else {
+      if (res.ok) {
+        alert("Đã xoá thành công!");
+        fetchData();
+      } else {
+        alert("Xoá thất bại!");
+      }
+    } catch (err) {
+      console.error("Lỗi khi xoá:", err);
       alert("Xoá thất bại!");
     }
   };
@@ -48,8 +60,8 @@ const TableCheckin = () => {
           <thead className="text-xs text-gray-700 uppercase bg-gray-100">
             <tr>
               <th className="px-6 py-3">Tên điểm</th>
-              <th className="px-6 py-3">Thông tin</th>
-              <th className="px-6 py-3">Bài viết</th>
+              <th className="px-6 py-3">Bài viết (vi)</th>
+              <th className="px-6 py-3">Bài viết (en)</th>
               <th className="px-6 py-3">Thao tác</th>
             </tr>
           </thead>
@@ -89,4 +101,4 @@ const TableCheckin = () => {
   );
 };
 
-export default TableCheckin;
+export default TableVissit;

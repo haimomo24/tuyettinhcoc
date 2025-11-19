@@ -1,12 +1,20 @@
-import VisitDetail from '@/app/component/vi/common/VisitDetail'
-import React from 'react'
+"use client";
+import React from 'react';
+import VisitDetailClient from '@/app/component/vi/common/VisitDetail';
+import { useParams } from "next/navigation";
 
-const page = () => {
+
+const Page = () => {
+  const params = useParams(); 
+  const id = params.id;
+
+  if (!id) return <p>Không tìm thấy ID</p>;
+  
   return (
     <div>
-        <VisitDetail/>
+      <VisitDetailClient id={id} />
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default Page;
