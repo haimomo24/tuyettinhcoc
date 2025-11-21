@@ -64,17 +64,17 @@ const ContactPage = () => {
 
   return (
     <div className="relative bg-cover bg-center">
-      
+
       <div className="absolute max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 inset-0 opacity-60">
-       <h2 className="font-['Playfair_Display'] font-semibold text-[#8a6d46] text-3xl text-center lg:text-left">
+        <h2 className="font-['Playfair_Display'] font-semibold text-[#8a6d46] text-3xl text-center lg:text-left">
           LIÊN HỆ ĐẶT LỊCH
         </h2>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 flex flex-col lg:flex-row justify-center items-start lg:space-x-12">
-        
+
         {/* Slider bên trái */}
-        <div className="bg-white/20 backdrop-blur-sm rounded-xl p-6 md:p-8 lg:p-10 w-full lg:w-2/3 max-w-3xl mb-12 lg:mb-0 shadow-xl">
+        <div className="bg-gray-300 backdrop-blur-sm rounded-xl p-6 md:p-8 lg:p-10 w-full lg:w-2/3 max-w-3xl mb-12 lg:mb-0 shadow-xl">
           <Slider {...sliderSettings}>
             {slides.map((slide) => (
               <div key={slide.id} onClick={() => router.push(slide.link)} className="w-full cursor-pointer">
@@ -85,7 +85,7 @@ const ContactPage = () => {
         </div>
 
         {/* Form bên phải */}
-        <div className="bg-white rounded-xl p-6 md:p-8 lg:p-10  w-full lg:w-1/3 max-w-md shadow-xl">
+        <div className="bg-gray-300 rounded-xl p-6 md:p-8 lg:p-10  w-full lg:w-1/3 max-w-md shadow-xl">
           <h2 className="font-['Playfair_Display'] text-3xl font-bold text-[#8a6d46] mb-8">Đặt lịch online</h2>
           {msg && <p className="text-center mb-4 text-green-600 font-medium">{msg}</p>}
 
@@ -97,7 +97,7 @@ const ContactPage = () => {
                 placeholder="Họ và tên*"
                 value={form.name}
                 onChange={handleChange}
-                className="w-full border-b border-gray-300 focus:border-[#8a6d46] focus:ring-0 outline-none pb-2 text-gray-700 placeholder-gray-400 transition-colors duration-200"
+                className="w-full border-b bg-gray-300 border-gray-300 focus:border-[#8a6d46] focus:ring-0 outline-none pb-2 text-gray-700 placeholder-gray-400 transition-colors duration-200"
                 required
               />
               <input
@@ -106,7 +106,7 @@ const ContactPage = () => {
                 placeholder="Số điện thoại*"
                 value={form.phone}
                 onChange={handleChange}
-                className="w-full border-b border-gray-300 focus:border-[#8a6d46] focus:ring-0 outline-none pb-2 text-gray-700 placeholder-gray-400 transition-colors duration-200"
+                className="w-full border-b bg-gray-300 border-gray-300 focus:border-[#8a6d46] focus:ring-0 outline-none pb-2 text-gray-700 placeholder-gray-400 transition-colors duration-200"
                 required
               />
             </div>
@@ -118,7 +118,7 @@ const ContactPage = () => {
                 placeholder="Email*"
                 value={form.email}
                 onChange={handleChange}
-                className="w-full border-b border-gray-300 focus:border-[#8a6d46] focus:ring-0 outline-none pb-2 text-gray-700 placeholder-gray-400 transition-colors duration-200"
+                className="w-full border-b bg-gray-300 border-gray-300 focus:border-[#8a6d46] focus:ring-0 outline-none pb-2 text-gray-700 placeholder-gray-400 transition-colors duration-200"
                 required
               />
               <input
@@ -127,7 +127,7 @@ const ContactPage = () => {
                 placeholder="Địa chỉ"
                 value={form.address}
                 onChange={handleChange}
-                className="w-full border-b border-gray-300 focus:border-[#8a6d46] focus:ring-0 outline-none pb-2 text-gray-700 placeholder-gray-400 transition-colors duration-200"
+                className="w-full border-b bg-gray-300 border-gray-300 focus:border-[#8a6d46] focus:ring-0 outline-none pb-2 text-gray-700 placeholder-gray-400 transition-colors duration-200"
               />
             </div>
 
@@ -138,20 +138,29 @@ const ContactPage = () => {
                 placeholder="mm/dd/yyyy"
                 value={form.date}
                 onChange={handleChange}
-                className="w-full border-b border-gray-300 focus:border-[#8a6d46] focus:ring-0 outline-none pb-2 text-gray-700 placeholder-gray-400 transition-colors duration-200"
+                className="w-full border-b bg-gray-300 border-gray-300 focus:border-[#8a6d46] focus:ring-0 outline-none pb-2 text-gray-700 placeholder-gray-400 transition-colors duration-200"
               />
-              <select
-                id="room_type"
-                value={form.room_type}
-                onChange={handleChange}
-                className="w-full border-b border-gray-300 focus:border-[#8a6d46] focus:ring-0 outline-none pb-2 text-gray-700 placeholder-gray-400 appearance-none bg-white pr-6 transition-colors duration-200"
-              >
-                <option value="">Dịch vụ</option>
-                <option value="Cắm trại">Cắm trại</option>
-                <option value="Thăm quan">Thăm quan</option>
-                <option value="Team building">Team building</option>
-                <option value="Dịch vụ khác">Dịch vụ khác</option>
-              </select>
+              <div className="relative">
+                <select
+                  id="room_type"
+                  value={form.room_type}
+                  onChange={handleChange}
+                  className="w-full border-b bg-gray-300 border-gray-300 focus:border-[#8a6d46] 
+               focus:ring-0 outline-none pb-2 text-gray-700 placeholder-gray-400
+               appearance-none pr-10"
+                >
+                  <option className="bg-gray-300 text-gray-700" value="">Dịch vụ</option>
+                  <option className="bg-gray-300 text-gray-700" value="Cắm trại">Cắm trại</option>
+                  <option className="bg-gray-300 text-gray-700" value="Thăm quan">Thăm quan</option>
+                  <option className="bg-gray-300 text-gray-700" value="Team building">Team building</option>
+                  <option className="bg-gray-300 text-gray-700" value="Dịch vụ khác">Dịch vụ khác</option>
+                </select>
+
+                {/* Mũi tên */}
+                <span className="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-gray-700">
+                  ▼
+                </span>
+              </div>
             </div>
 
             <p className="text-sm text-gray-600 leading-relaxed pt-4">

@@ -1,41 +1,39 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
-const ServiceDetail = () => {
-  const { id } = useParams();
-  const [service, setService] = useState(null);
+export default function VisitDetailClient({ id }) {
+  const [visit, setVisit] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // 🟢 Lấy dữ liệu service theo ID
   useEffect(() => {
     if (!id) return;
-    const fetchService = async () => {
+
+    const fetchVisit = async () => {
       try {
-        const res = await fetch(`/api/service/${id}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/service/${id}`);
+        if (!res.ok) throw new Error("Không lấy được dữ liệu");
         const data = await res.json();
-        setService(data);
+        setVisit(data);
       } catch (err) {
-        console.error("Lỗi khi lấy dữ liệu:", err);
+        console.error(err);
       } finally {
         setLoading(false);
       }
     };
-    fetchService();
+
+    fetchVisit();
   }, [id]);
 
   if (loading)
     return <div className="text-center py-20 text-gray-500">Đang tải dữ liệu...</div>;
-  if (!service || !service.id)
-    return <div className="text-center py-20 text-gray-500">Không tìm thấy dữ liệu</div>;
+  if (!visit) return <div className="text-center py-20 text-gray-500">Không tìm thấy dữ liệu</div>;
 
   // Gom các section (title + image) để hiển thị từng phần
   const sections = [
-    { title: service.title_1, image: service.image_1 },
-    { title: service.title_2, image: service.image_2 },
-    { title: service.title_3, image: service.image_3 },
-    { title: service.title_4, image: service.image_4 },
-    { title: service.title_5, image: service.image_5 },
+    { title: visit.title_1, image: visit.image_1 },
+    { title: visit.title_2, image: visit.image_2 },
+    { title: visit.title_3, image: visit.image_3 },
+    { title: visit.title_4, image: visit.image_4 },
   ].filter(section => section.title || section.image);
 
   return (
@@ -47,19 +45,17 @@ const ServiceDetail = () => {
         {/* Bài chính */}
         <article className="lg:col-span-2 space-y-8">
           <h1 className="text-4xl font-bold leading-tight text-gray-900 mb-6 border-b pb-4">
-            {service.name}
+            {visit.name}
           </h1>
 
           {sections.map((section, index) => (
             <div key={index} className="space-y-4">
               {section.title && (
-                <p className="text-lg leading-7 text-gray-800 text-justify">
-                  {section.title}
-                </p>
+                <p className="text-lg leading-7 text-gray-800 text-justify">{section.title}</p>
               )}
               {section.image && (
                 <img
-                  src={section.image}
+                  src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/service/${section.image}`}
                   alt={`Ảnh ${index + 1}`}
                   className="w-full h-auto rounded-lg shadow-md border"
                 />
@@ -70,14 +66,12 @@ const ServiceDetail = () => {
           <div className="text-right mt-10 italic text-gray-600">— Kết thúc bài viết —</div>
         </article>
 
-        {/* Placeholder dịch vụ liên quan */}
+        {/* Sidebar placeholder */}
         <aside className="bg-gray-50 p-4 rounded-xl shadow-sm">
-          <h2 className="text-lg font-semibold border-b pb-2 mb-4">Dịch vụ liên quan</h2>
-          <p className="text-gray-500 text-sm">Các dịch vụ khác sẽ hiển thị ở đây.</p>
+          <h2 className="text-lg font-semibold border-b pb-2 mb-4">Các điểm tham quan khác</h2>
+          <p className="text-gray-500 text-sm">Các điểm khác sẽ hiển thị ở đây.</p>
         </aside>
       </div>
     </>
   );
-};
-
-export default ServiceDetail;
+}

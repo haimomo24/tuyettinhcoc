@@ -11,11 +11,20 @@ const page = () => {
   return (
     <div>
         <SliderImagevi/>
+        <div id='service'>
         <CarListvi/>
+        </div>
+        
         <VisitPage/>
         <NodeVisit/>
+        
+        <div id='new'>
         <NewPagevi/>
-        <ContactPage/>
+        </div>
+        <div id='contact'>
+          <ContactPage/>
+          </div>
+        
         <VideoPage/>
     </div>
   )

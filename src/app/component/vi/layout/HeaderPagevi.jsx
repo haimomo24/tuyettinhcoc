@@ -26,10 +26,10 @@ const HeaderPagevi = () => {
           <a href="/vi" className="hover:text-blue-600  font-semibold  text-[18px] transition">
            TRANG CHỦ
           </a>
-          <a href="#" className="hover:text-blue-600  font-semibold  text-[18px] transition">
+          <a href="#service" className="hover:text-blue-600  font-semibold  text-[18px] transition">
             GIỚI THIỆU
           </a>
-          <a href="#" className="hover:text-blue-600  font-semibold  text-[18px] transition">
+          <a href="#contact" className="hover:text-blue-600  font-semibold  text-[18px] transition">
             DỊCH VỤ
           </a>
         </nav>
@@ -47,7 +47,7 @@ const HeaderPagevi = () => {
 
         {/* Bên phải */}
         <nav className="flex gap-30 text-gray-700 font-medium">
-          <a href="#" className="hover:text-blue-600  font-semibold  text-[18px] transition">
+          <a href="#new" className="hover:text-blue-600  font-semibold  text-[18px] transition">
             TIN TỨC
           </a>
           <a href="/vi/contact" className="hover:text-blue-600  font-semibold  text-[18px] transition">
