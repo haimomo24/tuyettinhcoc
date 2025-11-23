@@ -6,68 +6,73 @@ import { useRouter } from "next/navigation";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const ContactPage = () => {
-  const router = useRouter();
-
-  const slides = [
-    { id: 1, img: "https://stcd02265632633.cloud.edgevnpay.vn/website-vnpay-public/fill/2023/10/0q62mo54ofpt1697864508657.jpg", link: "/vi/contact" },
-    { id: 2, img: "https://thesinhtourism.vn/wp-content/uploads/2025/05/tour-du-lich-ninh-binh-tuyet-tinh-coc-ninh-binh-trang-an-du-lich-the-sinh-tourist-004-1200x540.jpg", link: "/vi/contact" },
-    { id: 3, img: "https://mia.vn/media/uploads/blog-du-lich/tuyet-tinh-coc-ninh-binh-5-1690702332.jpg", link: "/vi/contact" },
-  ];
-
-  const [form, setForm] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    address: "",
-    date: "",
-    room_type: "",
-  });
-  const [msg, setMsg] = useState("");
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.id]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setMsg("");
-
-    try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/contact`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+const ContactPageEn = () => {
+     const router = useRouter();
+    
+      const slides = [
+        { id: 1, img: "https://stcd02265632633.cloud.edgevnpay.vn/website-vnpay-public/fill/2023/10/0q62mo54ofpt1697864508657.jpg", link: "/en/contact" },
+        { id: 2, img: "https://thesinhtourism.vn/wp-content/uploads/2025/05/tour-du-lich-ninh-binh-tuyet-tinh-coc-ninh-binh-trang-an-du-lich-the-sinh-tourist-004-1200x540.jpg", link: "/en/contact" },
+        { id: 3, img: "https://mia.vn/media/uploads/blog-du-lich/tuyet-tinh-coc-ninh-binh-5-1690702332.jpg", link: "/en/contact" },
+      ];
+    
+      const [form, setForm] = useState({
+        name: "",
+        phone: "",
+        email: "",
+        address: "",
+        date: "",
+        room_type: "",
       });
-      const data = await res.json();
-
-      if (res.ok) {
-        setMsg("Gửi liên hệ thành công!");
-        setForm({ name: "", phone: "", email: "", address: "", date: "", room_type: "" });
-      } else {
-        setMsg(data.error || "Gửi thất bại");
-      }
-    } catch (err) {
-      console.error(err);
-      setMsg("Lỗi server, thử lại sau.");
-    }
-  };
-
-  const sliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    arrows: false,
-  };
-
+      const [msg, setMsg] = useState("");
+    
+      const handleChange = (e) => {
+        setForm({ ...form, [e.target.id]: e.target.value });
+      };
+    
+      const handleSubmit = async (e) => {
+        e.preventDefault();
+        setMsg("");
+    
+        try {
+          const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/contact`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(form),
+          });
+          const data = await res.json();
+    
+          if (res.ok) {
+            setMsg("Gửi liên hệ thành công!");
+            setForm({ name: "", phone: "", email: "", address: "", date: "", room_type: "" });
+          } else {
+            setMsg(data.error || "Gửi thất bại");
+          }
+        } catch (err) {
+          console.error(err);
+          setMsg("Lỗi server, thử lại sau.");
+        }
+      };
+    
+      const sliderSettings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        arrows: false,
+      };
+    
   return (
-    <div className="relative bg-cover bg-center">
+    <>
+    
+      
+    
+     <div className="relative bg-cover bg-center">
 
-      <div className="absolute max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 inset-0 opacity-60">
+      <div className="absolute  max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 inset-0 opacity-60">
         <h2 className="font-['Playfair_Display'] font-semibold text-[#8a6d46] text-3xl text-center lg:text-left">
-          LIÊN HỆ ĐẶT LỊCH
+          
+                CONTACT TO MAKE AN APPOINTMENT
         </h2>
       </div>
 
@@ -86,7 +91,7 @@ const ContactPage = () => {
 
         {/* Form bên phải */}
         <div className="bg-gray-300 rounded-xl p-8 md:p-8 lg:p-10  w-full lg:w-1/4  shadow-xl">
-          <h2 className="font-['Playfair_Display'] text-3xl font-bold text-[#8a6d46] mb-8">Đặt lịch online</h2>
+          <h2 className="font-['Playfair_Display'] text-3xl font-bold text-[#8a6d46] mb-8">Book an appointment online</h2>
           {msg && <p className="text-center mb-4 text-green-600 font-medium">{msg}</p>}
 
           <form className="space-y-6 h-103" onSubmit={handleSubmit}>
@@ -94,7 +99,7 @@ const ContactPage = () => {
               <input
                 type="text"
                 id="name"
-                placeholder="Họ và tên*"
+                placeholder="Name*"
                 value={form.name}
                 onChange={handleChange}
                 className="w-full border-b bg-gray-300 border-gray-300 focus:border-[#8a6d46] focus:ring-0 outline-none pb-2 text-gray-700 placeholder-gray-400 transition-colors duration-200"
@@ -103,7 +108,7 @@ const ContactPage = () => {
               <input
                 type="tel"
                 id="phone"
-                placeholder="Số điện thoại*"
+                placeholder="Phone*"
                 value={form.phone}
                 onChange={handleChange}
                 className="w-full border-b bg-gray-300 border-gray-300 focus:border-[#8a6d46] focus:ring-0 outline-none pb-2 text-gray-700 placeholder-gray-400 transition-colors duration-200"
@@ -124,7 +129,7 @@ const ContactPage = () => {
               <input
                 type="text"
                 id="address"
-                placeholder="Địa chỉ"
+                placeholder="Address"
                 value={form.address}
                 onChange={handleChange}
                 className="w-full border-b bg-gray-300 border-gray-300 focus:border-[#8a6d46] focus:ring-0 outline-none pb-2 text-gray-700 placeholder-gray-400 transition-colors duration-200"
@@ -149,11 +154,11 @@ const ContactPage = () => {
                focus:ring-0 outline-none pb-2 text-gray-700 placeholder-gray-400
                appearance-none pr-10"
                 >
-                  <option className="bg-gray-300 text-gray-700" value="">Dịch vụ</option>
-                  <option className="bg-gray-300 text-gray-700" value="Cắm trại">Cắm trại</option>
-                  <option className="bg-gray-300 text-gray-700" value="Thăm quan">Thăm quan</option>
+                  <option className="bg-gray-300 text-gray-700" value="">Service</option>
+                  <option className="bg-gray-300 text-gray-700" value="Cắm trại">Camp</option>
+                  <option className="bg-gray-300 text-gray-700" value="Thăm quan">Visit</option>
                   <option className="bg-gray-300 text-gray-700" value="Team building">Team building</option>
-                  <option className="bg-gray-300 text-gray-700" value="Dịch vụ khác">Dịch vụ khác</option>
+                  <option className="bg-gray-300 text-gray-700" value="Dịch vụ khác">Other services</option>
                 </select>
 
                 {/* Mũi tên */}
@@ -164,17 +169,18 @@ const ContactPage = () => {
             </div>
 
             <p className="text-sm text-gray-600 leading-relaxed pt-20">
-              Vui lòng điền thông tin, tư vấn viên sẽ gọi cho bạn để xác nhận. Hotline: <span className="text-[#8a6d46] font-semibold">0912.900.897</span> hoặc <span className="text-[#8a6d46] font-semibold">0911.999.007</span>.
+              Please fill in the information, a consultant will call you to confirm. Hotline: <span className="text-[#8a6d46] font-semibold">0912.900.897</span> hoặc <span className="text-[#8a6d46] font-semibold">0911.999.007</span>.
             </p>
 
             <button type="submit" className="w-full bg-[#8a6d46] hover:bg-[#a08a6d] text-white font-bold py-3 rounded-lg transition duration-300 shadow-md">
-              Đặt lịch / Nhận tư vấn
+              Make an appointment / Get a consultation
             </button>
           </form>
         </div>
       </div>
-    </div>
-  );
-};
+    </div></>
+    
+  )
+}
 
-export default ContactPage;
+export default ContactPageEn

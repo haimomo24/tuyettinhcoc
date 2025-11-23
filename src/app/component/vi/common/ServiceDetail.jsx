@@ -38,8 +38,8 @@ export default function VisitDetailClient({ id }) {
 
   return (
     <>
-      {/* Spacer để header fixed không che phần đầu */}
-      <div className="h-[100px] w-full"></div>
+     
+    
 
       <div className="max-w-6xl mx-auto px-4 py-8 lg:grid lg:grid-cols-3 lg:gap-8">
         {/* Bài chính */}

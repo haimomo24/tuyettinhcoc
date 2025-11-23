@@ -47,7 +47,7 @@ const CheckinDetail = ({ id }) => {   // 🟢 NHẬN ID TỪ PROPS
 
   return (
     <>
-      <div className="h-[100px] w-full"></div>
+      
 
       <div className="max-w-6xl mx-auto px-4 py-8 lg:grid lg:grid-cols-3 lg:gap-8">
         <article className="lg:col-span-2 space-y-8">

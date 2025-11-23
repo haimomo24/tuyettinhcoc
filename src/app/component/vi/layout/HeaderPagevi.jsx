@@ -16,7 +16,7 @@ const HeaderPagevi = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full  z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 w-full   z-50 transition-all duration-500 ${
         isScrolled ? "bg-transparent backdrop-blur-md shadow-none py-4" : "bg-white shadow-md py-8"
       }`}
     >

@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 
-export default function VisitDetailClient({ id }) {
-  const [visit, setVisit] = useState(null);
+const VisitDetailEn = ({ id }) => {
+     const [visit, setVisit] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -30,21 +30,21 @@ export default function VisitDetailClient({ id }) {
 
   // Gom các section (title + image) để hiển thị từng phần
   const sections = [
-    { title: visit.title_1, image: visit.image_1 },
-    { title: visit.title_2, image: visit.image_2 },
-    { title: visit.title_3, image: visit.image_3 },
-    { title: visit.title_4, image: visit.image_4 },
+    { title: visit.title_1_en, image: visit.image_1 },
+    { title: visit.title_2_en, image: visit.image_2 },
+    { title: visit.title_3_en, image: visit.image_3 },
+    { title: visit.title_4_en, image: visit.image_4 },
   ].filter(section => section.title || section.image);
-
   return (
     <>
-     
+      {/* Spacer để header fixed không che phần đầu */}
+      <div className="h-[100px] w-full"></div>
 
       <div className="max-w-6xl mx-auto px-4 py-8 lg:grid lg:grid-cols-3 lg:gap-8">
         {/* Bài chính */}
         <article className="lg:col-span-2 space-y-8">
           <h1 className="text-4xl font-bold leading-tight text-gray-900 mb-6 border-b pb-4">
-            {visit.name}
+            {visit.name_en}
           </h1>
 
           {sections.map((section, index) => (
@@ -62,15 +62,17 @@ export default function VisitDetailClient({ id }) {
             </div>
           ))}
 
-          <div className="text-right mt-10 italic text-gray-600">— Kết thúc bài viết —</div>
+          <div className="text-right mt-10 italic text-gray-600">— End —</div>
         </article>
 
         {/* Sidebar placeholder */}
         <aside className="bg-gray-50 p-4 rounded-xl shadow-sm">
-          <h2 className="text-lg font-semibold border-b pb-2 mb-4">Các điểm tham quan khác</h2>
+          <h2 className="text-lg font-semibold border-b pb-2 mb-4">Other attractions</h2>
           <p className="text-gray-500 text-sm">Các điểm khác sẽ hiển thị ở đây.</p>
         </aside>
       </div>
     </>
-  );
+  )
 }
+
+export default VisitDetailEn

@@ -18,11 +18,14 @@ export default function ViLayout({ children }) {
   return (
     <html lang="vi">
       <body>
-       <HeaderPagevi/>
-        {children}
-        <FooterPage/>
-       
-       
+        <HeaderPagevi />
+        <div>
+          <div className="h-[100px] w-full"></div>
+          {children}
+        </div>
+        <FooterPage />
+
+
       </body>
     </html>
   );

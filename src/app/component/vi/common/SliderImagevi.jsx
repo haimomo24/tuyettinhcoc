@@ -21,7 +21,7 @@ const SliderImagevi = () => {
   }, []);
 
   return (
-    <div className="relative mt-[50px] w-full h-[80vh] md:h-[90vh] overflow-hidden">
+    <div className="relative w-full h-[80vh] md:h-[90vh] overflow-hidden">
       {/* Ảnh */}
       {images.map((src, index) => (
         <img

@@ -1,5 +1,6 @@
 
 
+import FooterPageEn from "../component/en/layout/FooterPageEn";
 import HeaderPageen from "../component/en/layout/HeaderPageen";
 import "../globals.css";
 
@@ -18,10 +19,15 @@ export default function ViLayout({ children }) {
   return (
     <html lang="vi">
       <body>
-      <HeaderPageen/>
-        {children}
-       
-       
+
+        <HeaderPageen />
+
+        <div>
+          <div className="h-[100px] w-full"></div>
+          {children}
+        </div>
+        <FooterPageEn />
+
       </body>
     </html>
   );
