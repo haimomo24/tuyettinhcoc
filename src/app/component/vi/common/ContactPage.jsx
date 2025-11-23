@@ -66,7 +66,7 @@ const ContactPage = () => {
     <div className="relative bg-cover bg-center">
 
       <div className="absolute max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 inset-0 opacity-60">
-        <h2 className="font-['Playfair_Display'] font-semibold text-[#8a6d46] text-3xl text-center lg:text-left">
+        <h2 className="font-['Playfair_Display'] hover:text-blue-600 font-semibold text-[#8a6d46] text-3xl text-center lg:text-left">
           LIÊN HỆ ĐẶT LỊCH
         </h2>
       </div>

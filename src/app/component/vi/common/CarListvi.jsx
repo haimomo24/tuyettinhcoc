@@ -35,7 +35,7 @@ const CarListvi = () => {
   return (
     <div className="bg-[#fdf6f0] py-16">
       <div className="text-center mb-12">
-        <h2 className="font-['Playfair_Display'] font-semibold text-[#8a6d46] mb-8 text-3xl sm:text-3xl lg:text-3xl text-center">TUYỆT TỊNH CỐC</h2>
+        <h2 className="font-['Playfair_Display'] font-semibold text-[#8a6d46] mb-8 text-3xl sm:text-3xl lg:text-3xl text-center hover:text-blue-600 ">TUYỆT TỊNH CỐC</h2>
         <p className="text-[#6b6b6b] italic mt-2">~ Bản giao hưởng miền nhiệt đới ~</p>
       </div>
 

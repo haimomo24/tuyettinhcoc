@@ -34,7 +34,7 @@ const CarListEn = () => {
   return (
      <div className="bg-[#fdf6f0] py-16">
       <div className="text-center mb-12">
-        <h2 className="font-['Playfair_Display'] text-[#8a6d46] text-3xl mb-8">TINH COC LAND</h2>
+        <h2 className="font-['Playfair_Display'] hover:text-blue-600 text-[#8a6d46] text-3xl mb-8">TINH COC LAND</h2>
         <p className="text-[#6b6b6b] italic mt-2">~ Tropical Symphony ~</p>
       </div>
 
