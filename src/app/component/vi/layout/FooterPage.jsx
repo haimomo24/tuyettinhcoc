@@ -20,7 +20,7 @@ const FooterPage = () => {
             </p>
 
             <a
-              href="#"
+              href="/vi/contact"
               className="py-2.5 px-5 bg-indigo-600 rounded-full shadow-sm text-xs text-white transition-all duration-500 hover:bg-indigo-700"
             >
               Contact us
@@ -28,14 +28,14 @@ const FooterPage = () => {
           </div>
 
           {/* BÊN PHẢI */}
-          <div className="text-right mt-10 lg:mt-0">
+          <div className="text-left mt-10 lg:mt-0">
             <ul className="text-sm text-gray-600">
               <li className="mb-4">
                 Địa chỉ: Phường Tây Hoa Lư, Tỉnh Ninh Bình
               </li>
 
               <li className="mb-4">
-                SĐT: 0123456789
+                SĐT: 0966163701
               </li>
 
               <li className="mb-4">

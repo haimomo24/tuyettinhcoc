@@ -6,7 +6,7 @@ const VideoPage = () => {
       
       {/* Tiêu đề với đường kẻ ngang */}
       <div className="w-full max-w-6xl flex items-center mb-6">
-      <h2 className="font-['Playfair_Display'] font-semibold text-[#8a6d46] mb-8 text-3xl sm:text-3xl lg:text-3xl text-center lg:text-left">
+      <h2 className="font-['Playfair_Display'] hover:text-blue-600 font-semibold text-[#8a6d46] mb-8 text-3xl sm:text-3xl lg:text-3xl text-center lg:text-left">
           VIDEO GIỚI THIỆU
         </h2>
         
