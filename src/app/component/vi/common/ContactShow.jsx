@@ -66,11 +66,23 @@ const ContactShow = () => {
         <h2 className="font-['Playfair_Display'] text-2xl md:text-3xl text-center font-bold text-[#8a6d46]  mb-6">
               Thông tin liên hệ 
             </h2>
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+            <p className="text-sm text-center font-bold  leading-relaxed">
+                Địa chỉ: Phường Tây Hoa Lư - Ninh Bình    
+                
+                
+              </p>
+              <br></br>
+
+              <p className="text-sm text-center font-bold  leading-relaxed mt-[-20px]" >
+                Email:  <span className=" font-bold">tuyettinhcocnb35@gmail.com</span>
+              </p>
+      <div className="max-w-7xl mx-auto mt-[50px] grid grid-cols-1 md:grid-cols-2 gap-10">
 
         {/* ===== CỘT TRÁI ===== */}
        <div className="   p-5 md:p-10 lg:p-25 w-full  shadow-2xl backdrop-blur-md  bg-stone-100">
-          
+          <h2 className="font-['Playfair_Display'] text-2xl md:text-3xl text-center font-bold text-[#8a6d46]  mb-6">
+              Đặt lịch online
+            </h2>
 
             {msg && (
               <p className="text-center mb-4 text-green-600 font-medium">
