@@ -44,7 +44,7 @@ const HeaderPagevi = () => {
           {/* Dropdown DỊCH VỤ */}
           <div className="relative group">
             <a
-              href="#contact"
+              href="/vi/new/1"
               className="hover:text-blue-600 font-semibold text-[18px] transition cursor-pointer"
             >
               DỊCH VỤ
@@ -52,9 +52,9 @@ const HeaderPagevi = () => {
 
             {/* MENU xổ xuống */}
             <div
-              className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg opacity-0 invisible 
-              group-hover:opacity-100 group-hover:visible transition-all duration-300"
-            >
+              className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg opacity-0 invisiblegroup-hover:opacity-100 group-hover:visible transition-all duration-300"
+            > 
+              
               <ul className="flex flex-col py-2 text-gray-700">
                   <li>
                   <a
