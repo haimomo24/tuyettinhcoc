@@ -10,9 +10,9 @@ const NodeVisit = () => {
   const [visits, setVisits] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL; 
-  const VISIT_ENDPOINT = `${API_URL}/api/visit`; 
-  const BASE_URL = API_URL.replace("/api", ""); 
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+  const VISIT_ENDPOINT = `${API_URL}/api/visit`;
+  const BASE_URL = API_URL.replace("/api", "");
 
   useEffect(() => {
     const fetchVisits = async () => {
@@ -56,7 +56,7 @@ const NodeVisit = () => {
             {visits.map((item) => (
               <div
                 key={item.id}
-                className="keen-slider__slide bg-white rounded-xl hover:scale-105 shadow-lg overflow-hidden flex flex-col border border-gray-100"
+                className="keen-slider__slide bg-white rounded-xl shadow-lg overflow-hidden flex flex-col border border-gray-100 transform transition-transform duration-300 ease-in-out  hover:scale-105 "
               >
                 {item.image_1 && (
                   <img
@@ -73,7 +73,7 @@ const NodeVisit = () => {
                   )}
                   <Link
                     href={`vi/visit/${item.id}`}
-                    className="mt-4 inline-block text-[#8a6d46] hover:text-[#a08a6d]"
+                    className="mt-4 inline-block text-[#8a6d46] hover:text-blue-600"
                   >
                     Xem chi tiết
                   </Link>

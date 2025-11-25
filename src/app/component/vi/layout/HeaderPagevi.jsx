@@ -28,23 +28,23 @@ const HeaderPagevi = () => {
 
           <a
             href="/vi"
-            className="hover:text-blue-600 font-semibold text-[18px] transition"
+            className="hover:text-blue-600 font-semibold text-[18px] transition hover:scale-105"
           >
             Trang chủ
           </a>
 
           <a
             href="/vi/new/1"
-            className="hover:text-blue-600 font-semibold text-[18px] transition"
+            className="hover:text-blue-600 font-semibold text-[18px] transition hover:scale-105"
           >
             Giới thiệu
           </a>
 
           {/* Dropdown DỊCH VỤ */}
-          <div className="relative group">
+          <div className="relative group ">
             <a
               href="#contact"
-              className="hover:text-blue-600 font-semibold text-[18px] transition cursor-pointer"
+              className="hover:text-blue-600 font-semibold hover:scale-105 text-[18px] transition cursor-pointer"
             >
               Dịch vụ
             </a>
@@ -124,21 +124,21 @@ const HeaderPagevi = () => {
         <nav className="flex gap-30 text-gray-700 font-medium">
           <a
             href="#new"
-            className="hover:text-blue-600 font-semibold text-[18px] transition"
+            className="hover:text-blue-600 font-semibold hover:scale-105 text-[18px] transition"
           >
             Tin tức
           </a>
 
           <a
             href="/vi/contact"
-            className="hover:text-blue-600 font-semibold text-[18px] transition"
+            className="hover:text-blue-600 hover:scale-105 font-semibold text-[18px] transition"
           >
             Liên hệ
           </a>
 
           <a
             href="/en"
-            className="hover:text-blue-600 text-[15px] transition"
+            className="hover:text-blue-600 hover:scale-105 text-[15px] transition"
           >
             en
           </a>

@@ -56,7 +56,7 @@ const VisitPage = () => {
             {checkins.map((item) => (
               <div
                 key={item.id}
-                className="keen-slider__slide bg-white rounded-xl shadow-lg hover:scale-105 overflow-hidden flex flex-col border border-gray-100"
+                className="keen-slider__slide bg-white rounded-xl shadow-lg  overflow-hidden flex flex-col border border-gray-100 transform transition-transform duration-300 ease-in-out  hover:scale-105 "
               >
                 {item.image_1 && (
                   <img
@@ -72,7 +72,7 @@ const VisitPage = () => {
                   )}
                   <Link
                     href={`/vi/checkin/${item.id}`}
-                    className="mt-4 hover:scale-105 inline-block text-[#8a6d46] hover:text-[#a08a6d]"
+                    className="mt-4 hover:scale-105 inline-block text-[#8a6d46] hover:text-blue-600"
                   >
                     Xem chi tiết
                   </Link>

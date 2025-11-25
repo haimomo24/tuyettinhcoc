@@ -48,7 +48,7 @@ const NewPagevi = () => {
           {currentBlogs.map((item) => (
             <div
               key={item.id}
-              className="bg-white rounded-xl hover:scale-105 shadow-lg overflow-hidden border"
+              className="bg-white rounded-xl  shadow-lg overflow-hidden border transform transition-transform duration-300 ease-in-out  hover:scale-105   "
             >
               {item.image_1 && (
                 <img
@@ -68,7 +68,7 @@ const NewPagevi = () => {
 
                 <Link
                   href={`/vi/new/${item.id}`}
-                  className="text-[#8a6d46] inline-block mt-4"
+                  className="mt-4 inline-block text-[#8a6d46] hover:text-blue-600"
                 >
                   Xem chi tiết
                 </Link>
