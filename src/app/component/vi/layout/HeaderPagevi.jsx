@@ -16,11 +16,10 @@ const HeaderPagevi = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-        isScrolled
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${isScrolled
           ? "bg-transparent backdrop-blur-md shadow-none py-4"
           : "bg-white shadow-md py-8"
-      }`}
+        }`}
     >
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6">
 
@@ -31,32 +30,35 @@ const HeaderPagevi = () => {
             href="/vi"
             className="hover:text-blue-600 font-semibold text-[18px] transition"
           >
-            TRANG CHỦ
+            Trang chủ
           </a>
 
           <a
-            href="#service"
+            href="/vi/new/1"
             className="hover:text-blue-600 font-semibold text-[18px] transition"
           >
-            GIỚI THIỆU
+            Giới thiệu
           </a>
 
           {/* Dropdown DỊCH VỤ */}
           <div className="relative group">
             <a
-              href="/vi/new/1"
+              href="#contact"
               className="hover:text-blue-600 font-semibold text-[18px] transition cursor-pointer"
             >
-              DỊCH VỤ
+              Dịch vụ
             </a>
 
             {/* MENU xổ xuống */}
             <div
-              className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg opacity-0 invisiblegroup-hover:opacity-100 group-hover:visible transition-all duration-300"
-            > 
-              
+              className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg opacity-0 invisible  group-hover:opacity-100 group-hover:visible transition-all duration-300"
+             
+            
+             
+            >
+
               <ul className="flex flex-col py-2 text-gray-700">
-                  <li>
+                <li>
                   <a
                     href="/vi/service/7"
                     className="block px-4 py-2 hover:bg-blue-100 transition"
@@ -64,7 +66,7 @@ const HeaderPagevi = () => {
                     Tham quan
                   </a>
                 </li>
-                
+
                 <li>
                   <a
                     href="/vi/service/3"
@@ -73,7 +75,7 @@ const HeaderPagevi = () => {
                     Team Building
                   </a>
                 </li>
-                  <li>
+                <li>
                   <a
                     href="/vi/service/7"
                     className="block px-4 py-2 hover:bg-blue-100 transition"
@@ -91,7 +93,7 @@ const HeaderPagevi = () => {
                   </a>
                 </li>
 
-              
+
 
                 <li>
                   <a
@@ -124,21 +126,21 @@ const HeaderPagevi = () => {
             href="#new"
             className="hover:text-blue-600 font-semibold text-[18px] transition"
           >
-            TIN TỨC
+            Tin tức
           </a>
 
           <a
             href="/vi/contact"
             className="hover:text-blue-600 font-semibold text-[18px] transition"
           >
-            LIÊN HỆ
+            Liên hệ
           </a>
 
           <a
             href="/en"
             className="hover:text-blue-600 text-[15px] transition"
           >
-            EN
+            en
           </a>
         </nav>
       </div>

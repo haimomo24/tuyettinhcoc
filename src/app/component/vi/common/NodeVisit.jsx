@@ -45,7 +45,7 @@ const NodeVisit = () => {
 
   return (
     <div className="bg-white py-12 md:py-16 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="font-['Playfair_Display'] hover:text-blue-600 font-semibold text-[#8a6d46] mb-8 text-3xl text-center lg:text-left">
           SỔ TAY DU LỊCH
         </h2>
@@ -56,7 +56,7 @@ const NodeVisit = () => {
             {visits.map((item) => (
               <div
                 key={item.id}
-                className="keen-slider__slide bg-white rounded-xl shadow-lg overflow-hidden flex flex-col border border-gray-100"
+                className="keen-slider__slide bg-white rounded-xl hover:scale-105 shadow-lg overflow-hidden flex flex-col border border-gray-100"
               >
                 {item.image_1 && (
                   <img

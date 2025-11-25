@@ -45,34 +45,34 @@ const VisitPage = () => {
 
   return (
     <div className="bg-gray-50 py-12 md:py-16 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="font-['Playfair_Display'] hover:text-blue-600 font-semibold text-[#8a6d46] mb-8 text-3xl text-center lg:text-left">
           CÁC ĐIỂM CHECK IN
         </h2>
 
-        <div className="relative">
+        <div className="relative ">
           {/* Slider */}
           <div ref={sliderRef} className="keen-slider">
             {checkins.map((item) => (
               <div
                 key={item.id}
-                className="keen-slider__slide bg-white rounded-xl shadow-lg overflow-hidden flex flex-col border border-gray-100"
+                className="keen-slider__slide bg-white rounded-xl shadow-lg hover:scale-105 overflow-hidden flex flex-col border border-gray-100"
               >
                 {item.image_1 && (
                   <img
                     src={`${BASE_URL}/uploads/checkin/${item.image_1}`}
                     alt={item.name}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-48 object-cover "
                   />
                 )}
-                <div className="p-6 flex flex-col flex-grow">
-                  <p className="font-semibold text-lg truncate">{item.name}</p>
+                <div className="p-6 flex flex-col flex-grow ">
+                  <p className="font-semibold  text-lg truncate">{item.name}</p>
                   {item.title_1 && (
-                    <p className="text-gray-700 line-clamp-3 mt-2">{item.title_1}</p>
+                    <p className="text-gray-700  line-clamp-3 mt-2">{item.title_1}</p>
                   )}
                   <Link
                     href={`/vi/checkin/${item.id}`}
-                    className="mt-4 inline-block text-[#8a6d46] hover:text-[#a08a6d]"
+                    className="mt-4 hover:scale-105 inline-block text-[#8a6d46] hover:text-[#a08a6d]"
                   >
                     Xem chi tiết
                   </Link>

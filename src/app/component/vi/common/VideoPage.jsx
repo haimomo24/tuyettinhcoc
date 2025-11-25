@@ -5,7 +5,7 @@ const VideoPage = () => {
     <div className=" flex  flex-col items-center p-6">
       
       {/* Tiêu đề với đường kẻ ngang */}
-      <div className="w-full max-w-6xl flex items-center mb-6">
+      <div className="w-full max-w-[80%] flex items-center mb-6">
       <h2 className="font-['Playfair_Display'] hover:text-blue-600 font-semibold text-[#8a6d46] mb-8 text-3xl sm:text-3xl lg:text-3xl text-center lg:text-left">
           VIDEO GIỚI THIỆU
         </h2>
@@ -14,7 +14,7 @@ const VideoPage = () => {
       </div>
 
       {/* Khung nhúng video */}
-      <div className="w-full max-w-6xl aspect-video mb-4">
+      <div className="w-full max-w-[80%] aspect-video mb-4">
         <iframe
           className="w-full h-full rounded-lg shadow-lg"
           src="https://www.youtube.com/embed/oJWek4rXiyY"

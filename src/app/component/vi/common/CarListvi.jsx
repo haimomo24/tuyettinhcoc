@@ -49,7 +49,7 @@ const CarListvi = () => {
         <p className="text-[#6b6b6b] italic mt-2">~ Bản giao hưởng miền nhiệt đới ~</p>
       </div>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 px-6">
+      <div className="max-w-[80%] mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 px-6">
         {currentServices.map((service) => (
           <div
             key={service.id}
@@ -70,12 +70,40 @@ const CarListvi = () => {
                 )}
               </div>
               <div className="flex justify-end mt-auto">
-                <button
-                  onClick={() => router.push(`/vi/service/${service.id}`)}
-                  className="bg-[#f5d1bb] text-[#7a4b2f] px-4 py-2 rounded-md hover:bg-[#eec2a5] transition"
-                >
-                  Xem chi tiết
-                </button>
+             <button
+  onClick={() => router.push(`/vi/service/${service.id}`)}
+  className="relative flex items-center cursor-pointer overflow-hidden group w-fit"
+>
+  {/* Vòng tròn nền mở rộng */}
+  <span
+    className="absolute left-0 top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full border-2 border-[#b86d29]
+    transition-all duration-500 ease-out group-hover:w-full group-hover:left-0 group-hover:right-0
+    group-hover:rounded-xl group-hover:bg-[#b86d29]/20"
+  >
+    {/* Mũi tên → */}
+    <span
+      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl text-[#b86d29]
+      transition-opacity duration-300 group-hover:opacity-0"
+    >
+      →
+    </span>
+  </span>
+
+  {/* Nội dung chữ */}
+  <span className="relative flex items-center pl-4 pr-4">
+    {/* Khoảng trống cho vòng tròn */}
+    <span className="w-10 h-10 flex-shrink-0"></span>
+
+    {/* Chữ */}
+    <span
+      className="text-[#7a4b2f] font-medium transition-all duration-500 ease-out group-hover:ml-2"
+    >
+      Xem chi tiết
+    </span>
+  </span>
+</button>
+
+
               </div>
             </div>
           </div>
@@ -89,9 +117,8 @@ const CarListvi = () => {
             <button
               key={i + 1}
               onClick={() => setCurrentPage(i + 1)}
-              className={`px-2 rounded-md border ${
-                currentPage === i + 1 ? "bg-[#f5d1bb] text-[#7a4b2f]" : "bg-white text-gray-700"
-              } hover:bg-[#eec2a5] transition`}
+              className={`px-2 rounded-md border ${currentPage === i + 1 ? "bg-[#f5d1bb] text-[#7a4b2f]" : "bg-white text-gray-700"
+                } hover:bg-[#eec2a5] transition`}
             >
               {i + 1}
             </button>

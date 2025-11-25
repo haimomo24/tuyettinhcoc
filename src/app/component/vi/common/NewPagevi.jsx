@@ -38,17 +38,17 @@ const NewPagevi = () => {
 
   return (
     <div className="bg-gray-50 py-12 md:py-16">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-[80%] mx-auto px-4">
 
         <h2 className="font-['Playfair_Display'] hover:text-blue-600 font-semibold text-[#8a6d46] mb-8 text-3xl sm:text-3xl lg:text-3xl text-center lg:text-left">
           SỰ KIỆN
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-8">
           {currentBlogs.map((item) => (
             <div
               key={item.id}
-              className="bg-white rounded-xl shadow-lg overflow-hidden border"
+              className="bg-white rounded-xl hover:scale-105 shadow-lg overflow-hidden border"
             >
               {item.image_1 && (
                 <img

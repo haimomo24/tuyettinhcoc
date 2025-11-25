@@ -13,12 +13,12 @@ const ContactPage = () => {
     {
       id: 1,
       img: "https://stcd02265632633.cloud.edgevnpay.vn/website-vnpay-public/fill/2023/10/0q62mo54ofpt1697864508657.jpg",
-      link: "/vi/contact",
+      link: "/vi/new/1",
     },
     {
       id: 2,
       img: "https://thesinhtourism.vn/wp-content/uploads/2025/05/tour-du-lich-ninh-binh-tuyet-tinh-coc-ninh-binh-trang-an-du-lich-the-sinh-tourist-004-1200x540.jpg",
-      link: "/vi/contact",
+      link: "/vi/new/2",
     },
     {
       id: 3,
@@ -88,15 +88,15 @@ const ContactPage = () => {
   return (
     <>
     
-    <div className="relative w-full flex justify-center py-12 md:py-20">
+    <div className="relative w-full flex justify-center py-12 md:py-20 ">
       
 
       {/* WRAPPER BACKGROUND */}
       <div
-        className="relative rounded-3xl shadow-xl bg-cover bg-center bg-no-repeat p-4 md:p-6 w-full"
+        className="relative rounded-3xl shadow-2xl bg-cover bg-center bg-no-repeat rounded-lg  p-4 md:p-6 w-full"
         style={{
           backgroundImage: "url('/image/slider/e54ec461eb5867063e49.jpg')",
-          maxWidth: "1350px", 
+          maxWidth: "80%", 
           backgroundSize: "100% auto",
         }}
       >
@@ -213,9 +213,14 @@ const ContactPage = () => {
 
               <p className="text-sm text-[#FFFFFF] leading-relaxed">
                 Nhân viên tư vấn sẽ gọi xác nhận.  
-                Hotline: <span className="text-[#FFFFFF] font-semibold">0966163701</span> 
+                
                 
               </p>
+
+              <p className="text-sm text-[#FFFFFF] leading-relaxed mt-[-20px]" >
+                Hotline:  <span className="text-[#FFFFFF] font-semibold">0966163701</span>
+              </p>
+              
 
               <button
                 type="submit"
