@@ -6,6 +6,8 @@ import Link from "next/link";
 const NewPagevi = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const blogsPerPage = 6; // Số blog mỗi trang
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const BLOG_ENDPOINT = `${API_URL}/api/new`;
@@ -28,6 +30,12 @@ const NewPagevi = () => {
 
   if (loading) return <p className="text-center py-12">Đang tải dữ liệu...</p>;
 
+  // Tính toán phân trang
+  const indexOfLastBlog = currentPage * blogsPerPage;
+  const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
+  const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
+  const totalPages = Math.ceil(blogs.length / blogsPerPage);
+
   return (
     <div className="bg-gray-50 py-12 md:py-16">
       <div className="max-w-7xl mx-auto px-4">
@@ -37,8 +45,7 @@ const NewPagevi = () => {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-          {blogs.map((item) => (
+          {currentBlogs.map((item) => (
             <div
               key={item.id}
               className="bg-white rounded-xl shadow-lg overflow-hidden border"
@@ -56,9 +63,7 @@ const NewPagevi = () => {
                 </h3>
 
                 {item.title_1 && (
-                  <p className="text-gray-600 line-clamp-3">
-                    {item.title_1}
-                  </p>
+                  <p className="text-gray-600 line-clamp-3">{item.title_1}</p>
                 )}
 
                 <Link
@@ -70,8 +75,25 @@ const NewPagevi = () => {
               </div>
             </div>
           ))}
-
         </div>
+
+        {/* Phân trang */}
+        {totalPages > 1 && (
+          <div className="flex justify-center mt-10 gap-3">
+            {Array.from({ length: totalPages }, (_, i) => (
+              <button
+                key={i + 1}
+                onClick={() => setCurrentPage(i + 1)}
+                className={`px-2  rounded-md border ${
+                  currentPage === i + 1 ? "bg-[#f5d1bb] text-[#7a4b2f]" : "bg-white text-gray-700"
+                } hover:bg-[#eec2a5] transition`}
+              >
+                {i + 1}
+              </button>
+            ))}
+          </div>
+        )}
+
       </div>
     </div>
   );

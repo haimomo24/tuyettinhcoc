@@ -1,8 +1,6 @@
-
 import FooterPage from "../component/vi/layout/FooterPage";
 import HeaderPagevi from "../component/vi/layout/HeaderPagevi";
 import "../globals.css";
-
 
 export const metadata = {
   title: "Tuyệt Tịnh Cốc ",
@@ -16,17 +14,14 @@ export const metadata = {
 
 export default function ViLayout({ children }) {
   return (
-    <html lang="vi">
-      <body>
-        <HeaderPagevi />
-        <div>
-          <div className="h-[100px] w-full"></div>
-          {children}
-        </div>
-        <FooterPage />
+    <>
+      <HeaderPagevi />
 
+      <div className="h-[100px] w-full"></div>
 
-      </body>
-    </html>
+      {children}
+
+      <FooterPage />
+    </>
   );
 }

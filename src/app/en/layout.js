@@ -1,9 +1,6 @@
-
-
 import FooterPageEn from "../component/en/layout/FooterPageEn";
 import HeaderPageen from "../component/en/layout/HeaderPageen";
 import "../globals.css";
-
 
 export const metadata = {
   title: "Tuyệt Tịnh Cốc ",
@@ -15,20 +12,16 @@ export const metadata = {
   },
 };
 
-export default function ViLayout({ children }) {
+export default function EnLayout({ children }) {
   return (
-    <html lang="vi">
-      <body>
+    <>
+      <HeaderPageen />
 
-        <HeaderPageen />
+      <div className="h-[100px] w-full"></div>
 
-        <div>
-          <div className="h-[100px] w-full"></div>
-          {children}
-        </div>
-        <FooterPageEn />
+      {children}
 
-      </body>
-    </html>
+      <FooterPageEn />
+    </>
   );
 }

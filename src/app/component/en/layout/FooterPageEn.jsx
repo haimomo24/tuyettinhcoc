@@ -2,7 +2,7 @@ import React from 'react'
 
 const FooterPageEn = () => {
   return (
-     <footer className="w-full bg-gradient-to-t from-green-900 via-green-700/70 to-green-500/50 py-10">
+     <footer className="w-full bg-[#006545]   py-10">
       <div className="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
 
         {/* FLEX CHỈNH 2 BÊN */}
@@ -14,14 +14,11 @@ const FooterPageEn = () => {
               TINH COC LAND
             </h2>
 
-            <p className="text-sm text-gray-600 mb-6">
-              Trusted in more than 100 countries &amp; 5 million customers.
-              Have any query?
-            </p>
+          
 
             <a
               href="#"
-              className="py-2.5 px-5 bg-indigo-600 rounded-full shadow-sm text-xs text-white transition-all duration-500 hover:bg-indigo-700"
+              className="py-2.5 px-5 bg-[#8A6D46] rounded-full shadow-sm text-xs text-white transition-all duration-500 hover:bg-indigo-700"
             >
               Contact us
             </a>
@@ -29,7 +26,7 @@ const FooterPageEn = () => {
 
           {/* BÊN PHẢI */}
           <div className="text-right mt-10 lg:mt-0">
-            <ul className="text-sm text-gray-600">
+            <ul className="text-sm mt-10 text-[#FFFFFF]">
               <li className="mb-4">
                Address: Tay Hoa Lu Ward, Ninh Binh Province
               </li>

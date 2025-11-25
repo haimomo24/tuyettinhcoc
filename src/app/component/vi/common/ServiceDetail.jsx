@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 
-export default function VisitDetailClient({ id }) {
+const ServiceDetail = ({ id }) => {
   const [visit, setVisit] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -28,7 +28,6 @@ export default function VisitDetailClient({ id }) {
     return <div className="text-center py-20 text-gray-500">Đang tải dữ liệu...</div>;
   if (!visit) return <div className="text-center py-20 text-gray-500">Không tìm thấy dữ liệu</div>;
 
-  // Gom các section (title + image) để hiển thị từng phần
   const sections = [
     { title: visit.title_1, image: visit.image_1 },
     { title: visit.title_2, image: visit.image_2 },
@@ -38,11 +37,9 @@ export default function VisitDetailClient({ id }) {
 
   return (
     <>
-     
-    
-
       <div className="max-w-6xl mx-auto px-4 py-8 lg:grid lg:grid-cols-3 lg:gap-8">
-        {/* Bài chính */}
+        
+        {/* ARTICLE */}
         <article className="lg:col-span-2 space-y-8">
           <h1 className="text-4xl font-bold leading-tight text-gray-900 mb-6 border-b pb-4">
             {visit.name}
@@ -51,7 +48,9 @@ export default function VisitDetailClient({ id }) {
           {sections.map((section, index) => (
             <div key={index} className="space-y-4">
               {section.title && (
-                <p className="text-lg leading-7 text-gray-800 text-justify">{section.title}</p>
+                <p className="text-lg leading-7 text-gray-800 text-justify">
+                  {section.title}
+                </p>
               )}
               {section.image && (
                 <img
@@ -63,15 +62,94 @@ export default function VisitDetailClient({ id }) {
             </div>
           ))}
 
-          <div className="text-right mt-10 italic text-gray-600">— Kết thúc bài viết —</div>
+          <div className="text-right mt-10 italic text-gray-600">
+            — End of article —
+          </div>
         </article>
 
-        {/* Sidebar placeholder */}
-        <aside className="bg-gray-50 p-4 rounded-xl shadow-sm">
-          <h2 className="text-lg font-semibold border-b pb-2 mb-4">Các điểm tham quan khác</h2>
-          <p className="text-gray-500 text-sm">Các điểm khác sẽ hiển thị ở đây.</p>
+        {/* SIDEBAR FORM */}
+        <aside className="sticky top-54  self-start">
+          <div className="bg-white p-5 rounded-xl shadow-md border space-y-4 max-h-[620px] overflow-y-auto">
+            
+            <h2 className="text-xl font-semibold border-b pb-2 mb-3 text-gray-800">
+              Đặt Lịch Online
+            </h2>
+
+            <form className="space-y-4">
+
+              {/* NAME */}
+              <div>
+                <label className="text-sm font-medium text-gray-700">Your name</label>
+                <input
+                  type="text"
+                  className="w-full p-2 rounded-lg border focus:ring focus:ring-green-300 outline-none"
+                  placeholder="Enter your name"
+                />
+              </div>
+
+              {/* PHONE */}
+              <div>
+                <label className="text-sm font-medium text-gray-700">Phone number</label>
+                <input
+                  type="text"
+                  className="w-full p-2 rounded-lg border focus:ring focus:ring-green-300 outline-none"
+                  placeholder="Enter phone number"
+                />
+              </div>
+
+              {/* EMAIL (NEW) */}
+              <div>
+                <label className="text-sm font-medium text-gray-700">Email</label>
+                <input
+                  type="email"
+                  className="w-full p-2 rounded-lg border focus:ring focus:ring-green-300 outline-none"
+                  placeholder="Enter your email"
+                />
+              </div>
+
+              {/* ADDRESS */}
+              <div>
+                <label className="text-sm font-medium text-gray-700">Địa chỉ</label>
+                <input
+                  type="text"
+                  className="w-full p-2 rounded-lg border focus:ring focus:ring-green-300 outline-none"
+                  placeholder="Enter your address"
+                />
+              </div>
+
+              {/* DATE */}
+              <div>
+                <label className="text-sm font-medium text-gray-700">Choose date</label>
+                <input
+                  type="date"
+                  className="w-full p-2 rounded-lg border focus:ring focus:ring-green-300 outline-none"
+                />
+              </div>
+
+              {/* SERVICE */}
+              <div>
+                <label className="text-sm font-medium text-gray-700">Select service</label>
+                <select className="w-full p-2 rounded-lg border focus:ring focus:ring-green-300 outline-none">
+                  <option>Thăm quan {visit.name_en}</option>
+                  <option>Team-building</option>
+                  <option>Cắm trại</option>
+                  <option>Dịch vụ khác</option>
+                </select>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition"
+              >
+                Book now
+              </button>
+
+            </form>
+          </div>
         </aside>
       </div>
     </>
   );
-}
+};
+
+export default ServiceDetail;

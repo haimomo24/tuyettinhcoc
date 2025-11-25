@@ -24,8 +24,10 @@ const page = () => {
         <div id='contact'>
           <ContactPage/>
           </div>
-        
         <VideoPage/>
+        
+        
+        
     </div>
   )
 }
