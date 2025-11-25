@@ -46,7 +46,7 @@ const CarListvi = () => {
         <h2 className="font-['Playfair_Display'] font-semibold text-[#8a6d46] mb-8 text-3xl sm:text-3xl lg:text-3xl text-center hover:text-blue-600">
           TUYỆT TỊNH CỐC
         </h2>
-        <p className="text-[#6b6b6b] italic mt-2">~ Bản giao hưởng miền nhiệt đới ~</p>
+        <p className="text-[#6b6b6b] hover:text-blue-600 transform transition-transform duration-300 ease-in-out  hover:scale-105 italic mt-2">~ Nơi bình yên gọi tên ~</p>
       </div>
 
       <div className="max-w-[80%] mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 px-6">
