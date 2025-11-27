@@ -35,11 +35,6 @@ const AddCheckin = () => {
         formData.append(key, form[key] || "");
       });
 
-      // Debug: log tất cả key/value trong FormData
-      for (let pair of formData.entries()) {
-        console.log(pair[0], pair[1]);
-      }
-
       const res = await fetch(`${API_URL}/api/checkin`, {
         method: "POST",
         body: formData,
@@ -62,45 +57,61 @@ const AddCheckin = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white shadow rounded">
-      <h2 className="text-2xl font-bold mb-4">Thêm mới điểm tham quan</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="max-w-4xl mx-auto p-6 bg-white shadow rounded">
+      <h2 className="text-2xl font-bold mb-6">Thêm mới điểm tham quan</h2>
+      <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label className="block font-medium">Tên điểm (VN)</label>
-          <input type="text" name="name" value={form.name} onChange={handleChange} className="w-full border px-3 py-2 rounded" required />
+          <label className="block font-medium mb-1">Tên điểm (VN)</label>
+          <input
+            type="text"
+            name="name"
+            value={form.name}
+            onChange={handleChange}
+            className="w-full border px-3 py-2 rounded"
+            required
+          />
         </div>
         <div>
-          <label className="block font-medium">Tên điểm (EN)</label>
-          <input type="text" name="name_en" value={form.name_en} onChange={handleChange} className="w-full border px-3 py-2 rounded" />
+          <label className="block font-medium mb-1">Tên điểm (EN)</label>
+          <input
+            type="text"
+            name="name_en"
+            value={form.name_en}
+            onChange={handleChange}
+            className="w-full border px-3 py-2 rounded"
+          />
         </div>
 
-        <div className="flex gap-4">
+        <div className="flex gap-6">
           {["image_1", "image_2", "image_3"].map((img, idx) => (
-            <div key={idx}>
-              <label className="block font-medium">Ảnh {idx + 1}</label>
-              <input type="file" name={img} onChange={handleImageChange} accept="image/*" />
+            <div key={idx} className="flex flex-col items-start">
+              <label className="block font-medium mb-1">Ảnh {idx + 1}</label>
+              <input
+                type="file"
+                name={img}
+                onChange={handleImageChange}
+                accept="image/*"
+              />
             </div>
           ))}
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {["title_1", "title_2", "title_3", "title_4"].map((t, idx) => (
             <React.Fragment key={idx}>
-              <input
-                type="text"
+              <textarea
                 name={t}
                 placeholder={`Tiêu đề ${idx + 1} (VN)`}
                 value={form[t]}
                 onChange={handleChange}
-                className="border px-3 py-2 rounded"
+                className="border px-3 py-2 rounded w-full min-h-[100px] resize-y"
               />
-              <input
-                type="text"
+              <textarea
                 name={`${t}_en`}
                 placeholder={`Tiêu đề ${idx + 1} (EN)`}
                 value={form[`${t}_en`]}
                 onChange={handleChange}
-                className="border px-3 py-2 rounded"
+                className="border px-3 py-2 rounded w-full min-h-[100px] resize-y"
               />
             </React.Fragment>
           ))}
@@ -109,7 +120,7 @@ const AddCheckin = () => {
         <button
           type="submit"
           disabled={loading}
-          className={`px-6 py-2 rounded text-white ${loading ? "bg-gray-400" : "bg-green-600 hover:bg-green-700"}`}
+          className={`px-6 py-3 rounded text-white ${loading ? "bg-gray-400" : "bg-green-600 hover:bg-green-700"} transition`}
         >
           {loading ? "Đang thêm..." : "Thêm mới"}
         </button>

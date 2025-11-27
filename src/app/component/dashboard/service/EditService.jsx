@@ -90,27 +90,40 @@ const EditService = () => {
      }
    };
   return (
-     <div className="max-w-3xl mx-auto p-6 bg-white shadow rounded">
-           <h2 className="text-2xl font-bold mb-4">Sửa điểm tham quan</h2>
-           <form onSubmit={handleSubmit} className="space-y-4">
+     <div className="max-w-4xl mx-auto p-6 bg-white shadow rounded">
+           <h2 className="text-2xl font-bold mb-6">Sửa </h2>
+           <form onSubmit={handleSubmit} className="space-y-6">
              <div>
-               <label className="block font-medium">Tên điểm (VN)</label>
-               <input type="text" name="name" value={form.name} onChange={handleChange} className="w-full border px-3 py-2 rounded" required />
+               <label className="block font-medium mb-1">Tên điểm (VN)</label>
+               <input 
+                 type="text" 
+                 name="name" 
+                 value={form.name} 
+                 onChange={handleChange} 
+                 className="w-full border px-3 py-2 rounded" 
+                 required 
+               />
              </div>
              <div>
-               <label className="block font-medium">Tên điểm (EN)</label>
-               <input type="text" name="name_en" value={form.name_en} onChange={handleChange} className="w-full border px-3 py-2 rounded" />
+               <label className="block font-medium mb-1">Tên điểm (EN)</label>
+               <input 
+                 type="text" 
+                 name="name_en" 
+                 value={form.name_en} 
+                 onChange={handleChange} 
+                 className="w-full border px-3 py-2 rounded" 
+               />
              </div>
      
-             <div className="flex gap-4">
+             <div className="flex gap-6">
                {["image_1","image_2","image_3"].map((img,key) => (
-                 <div key={key}>
-                   <label className="block font-medium">Ảnh {key+1}</label>
+                 <div key={key} className="flex flex-col items-start">
+                   <label className="block font-medium mb-1">Ảnh {key+1}</label>
                    <input type="file" name={img} onChange={handleImageChange} accept="image/*" />
                    {(images[img] || existingImages[img]) && (
                      <img
-                       src={images[img] ? URL.createObjectURL(images[img]) : `/uploads/visit/${existingImages[img]}`}
-                       className="w-24 h-24 object-cover mt-2"
+                       src={images[img] ? URL.createObjectURL(images[img]) : `/uploads/service/${existingImages[img]}`}
+                       className="w-32 h-32 object-cover mt-2 rounded"
                        alt=""
                      />
                    )}
@@ -118,16 +131,32 @@ const EditService = () => {
                ))}
              </div>
      
-             <div className="grid grid-cols-2 gap-4">
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                {["title_1","title_2","title_3","title_4"].map((t,key) => (
                  <React.Fragment key={key}>
-                   <input type="text" name={t} placeholder={`Tiêu đề ${key+1} (VN)`} value={form[t]} onChange={handleChange} className="border px-3 py-2 rounded"/>
-                   <input type="text" name={`${t}_en`} placeholder={`Tiêu đề ${key+1} (EN)`} value={form[`${t}_en`]} onChange={handleChange} className="border px-3 py-2 rounded"/>
+                   <textarea
+                     name={t}
+                     placeholder={`Tiêu đề ${key+1} (VN)`}
+                     value={form[t]}
+                     onChange={handleChange}
+                     className="border px-3 py-2 rounded w-full min-h-[100px] resize-y"
+                   />
+                   <textarea
+                     name={`${t}_en`}
+                     placeholder={`Tiêu đề ${key+1} (EN)`}
+                     value={form[`${t}_en`]}
+                     onChange={handleChange}
+                     className="border px-3 py-2 rounded w-full min-h-[100px] resize-y"
+                   />
                  </React.Fragment>
                ))}
              </div>
      
-             <button type="submit" disabled={loading} className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
+             <button 
+               type="submit" 
+               disabled={loading} 
+               className="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition"
+             >
                {loading ? "Đang cập nhật..." : "Cập nhật"}
              </button>
            </form>
