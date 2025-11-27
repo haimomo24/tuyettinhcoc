@@ -9,7 +9,7 @@ const TableContact = () => {
   // Lấy danh sách contact
   const fetchData = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/contact");
+      const res = await fetch("http://14.241.110.144:1984/api/contact");
       const data = await res.json();
       setContacts(data);
       setLoading(false);
@@ -27,7 +27,7 @@ const TableContact = () => {
     if (!window.confirm("Bạn chắc chắn muốn xoá?")) return;
 
     try {
-      await fetch(`http://localhost:5000/api/contact/${id}`, {
+      await fetch(`http://14.241.110.144:1984/api/contact/${id}`, {
         method: "DELETE",
       });
 
