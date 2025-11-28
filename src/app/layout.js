@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Khu Du Lịch Tuyệt Tịnh Cốc Ninh Bình",
+  generator: null,
   description: "Khu Du Lịch Tuyệt Tịnh Cốc Ninh Bình",
   keywords: ["Tuyệt Tịnh Cốc", "Ninh Bình", "Du Lịch", "Tour"],
   authors: [{ name: "Tuyệt Tịnh Cốc Ninh Bình" }],
