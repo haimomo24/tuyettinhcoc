@@ -59,7 +59,7 @@ const ServiceDetail = ({ id }) => {
       const data = await res.json();
 
       if (res.ok) {
-        setMsg("Đặt lịch thành công! Nhân viên sẽ liên hệ.");
+        setMsg("Đặt lịch thành công! Chúng tôi sẽ liên hệ với quý khách trong thời gian sớm nhất.");
         setForm({
           name: "",
           phone: "",
