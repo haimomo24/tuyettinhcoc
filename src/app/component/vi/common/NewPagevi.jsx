@@ -44,16 +44,18 @@ const NewPagevi = () => {
           SỰ KIỆN
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {currentBlogs.map((item) => (
-            <div
+            <Link
               key={item.id}
-              className="bg-white rounded-xl  shadow-lg overflow-hidden border transform transition-transform duration-300 ease-in-out  hover:scale-105   "
+              href={`/vi/new/${item.id}`}
+              className="bg-white rounded-xl shadow-lg overflow-hidden border transform transition-transform duration-300 ease-in-out hover:scale-105 cursor-pointer"
             >
               {item.image_1 && (
                 <img
                   src={`${BASE_URL}/uploads/new/${item.image_1}`}
                   className="w-full h-[220px] object-cover"
+                  alt={item.name}
                 />
               )}
 
@@ -63,19 +65,20 @@ const NewPagevi = () => {
                 </h3>
 
                 {item.title_1 && (
-                  <p className="text-gray-600 line-clamp-3">{item.title_1}</p>
+                  <p className="text-gray-600 line-clamp-3">
+                    {item.title_1}
+                  </p>
                 )}
 
-                <Link
-                  href={`/vi/new/${item.id}`}
-                  className="mt-4 inline-block text-[#8a6d46] hover:text-blue-600"
-                >
+                <span className="mt-4 inline-block text-[#8a6d46] hover:text-blue-600">
                   Xem chi tiết
-                </Link>
+                </span>
               </div>
-            </div>
+
+            </Link>
           ))}
         </div>
+
 
         {/* Phân trang */}
         {totalPages > 1 && (
@@ -84,9 +87,8 @@ const NewPagevi = () => {
               <button
                 key={i + 1}
                 onClick={() => setCurrentPage(i + 1)}
-                className={`px-2  rounded-md border ${
-                  currentPage === i + 1 ? "bg-[#f5d1bb] text-[#7a4b2f]" : "bg-white text-gray-700"
-                } hover:bg-[#eec2a5] transition`}
+                className={`px-2  rounded-md border ${currentPage === i + 1 ? "bg-[#f5d1bb] text-[#7a4b2f]" : "bg-white text-gray-700"
+                  } hover:bg-[#eec2a5] transition`}
               >
                 {i + 1}
               </button>

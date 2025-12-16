@@ -30,16 +30,41 @@ const VisitPage = () => {
     fetchCheckins();
   }, [CHECKIN_ENDPOINT]);
 
-  const [sliderRef, instanceRef] = useKeenSlider({
-    slides: {
-      perView: 4,
-      spacing: 15,
+  // FIX CLICK KHI DRAG
+  const [sliderRef, instanceRef] = useKeenSlider(
+    {
+      slides: {
+        perView: 4,
+        spacing: 15,
+      },
+      breakpoints: {
+        "(max-width: 1024px)": { slides: { perView: 2, spacing: 10 } },
+        "(max-width: 640px)": { slides: { perView: 1, spacing: 5 } },
+      },
     },
-    breakpoints: {
-      "(max-width: 1024px)": { slides: { perView: 2, spacing: 10 } },
-      "(max-width: 640px)": { slides: { perView: 1, spacing: 5 } },
-    },
-  });
+    [
+      (slider) => {
+        let isDragging = false;
+
+        slider.on("dragStart", () => {
+          isDragging = true;
+        });
+
+        slider.on("dragEnd", () => {
+          setTimeout(() => {
+            isDragging = false;
+          }, 0);
+        });
+
+        slider.on("slideClick", (slide) => {
+          if (isDragging) {
+            slide.event.preventDefault();
+            slide.event.stopPropagation();
+          }
+        });
+      },
+    ]
+  );
 
   if (loading) return <p className="text-center py-12">Đang tải dữ liệu...</p>;
 
@@ -50,33 +75,40 @@ const VisitPage = () => {
           CÁC ĐIỂM CHECK IN
         </h2>
 
-        <div className="relative ">
-          {/* Slider */}
+        <div className="relative">
           <div ref={sliderRef} className="keen-slider">
             {checkins.map((item) => (
-              <div
-                key={item.id}
-                className="keen-slider__slide bg-white rounded-xl shadow-lg  overflow-hidden flex flex-col border border-gray-100 transform transition-transform duration-300 ease-in-out  hover:scale-105 "
-              >
-                {item.image_1 && (
-                  <img
-                    src={`${BASE_URL}/uploads/checkin/${item.image_1}`}
-                    alt={item.name}
-                    className="w-full h-48 object-cover "
-                  />
-                )}
-                <div className="p-6 flex flex-col flex-grow ">
-                  <p className="font-semibold  text-lg truncate">{item.name}</p>
-                  {item.title_1 && (
-                    <p className="text-gray-700  line-clamp-3 mt-2">{item.title_1}</p>
+              <div key={item.id} className="keen-slider__slide">
+                {/* Toàn bộ card là Link */}
+                <Link
+                  href={`/vi/checkin/${item.id}`}
+                  className="block bg-white rounded-xl shadow-lg overflow-hidden flex flex-col border border-gray-100 transform transition-transform duration-300 hover:scale-105"
+                >
+                  {item.image_1 && (
+                    <img
+                      src={`${BASE_URL}/uploads/checkin/${item.image_1}`}
+                      alt={item.name}
+                      className="w-full h-48 object-cover"
+                      draggable="false"
+                    />
                   )}
-                  <Link
-                    href={`/vi/checkin/${item.id}`}
-                    className="mt-4 hover:scale-105 inline-block text-[#8a6d46] hover:text-blue-600"
-                  >
-                    Xem chi tiết
-                  </Link>
-                </div>
+
+                  <div className="p-6 flex flex-col flex-grow">
+                    <p className="font-semibold text-lg truncate">
+                      {item.name}
+                    </p>
+
+                    {item.title_1 && (
+                      <p className="text-gray-700 line-clamp-3 mt-2">
+                        {item.title_1}
+                      </p>
+                    )}
+
+                    <span className="mt-4 inline-block text-[#8a6d46] hover:text-blue-600">
+                      Xem chi tiết →
+                    </span>
+                  </div>
+                </Link>
               </div>
             ))}
           </div>

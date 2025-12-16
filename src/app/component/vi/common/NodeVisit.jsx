@@ -53,34 +53,40 @@ const NodeVisit = () => {
         <div className="relative">
           {/* Slider */}
           <div ref={sliderRef} className="keen-slider">
-            {visits.map((item) => (
-              <div
-                key={item.id}
-                className="keen-slider__slide bg-white rounded-xl shadow-lg overflow-hidden flex flex-col border border-gray-100 transform transition-transform duration-300 ease-in-out  hover:scale-105 "
-              >
-                {item.image_1 && (
-                  <img
-                    src={`${BASE_URL}/uploads/visit/${item.image_1}`}
-                    alt={item.name}
-                    className="w-full h-48 object-cover"
-                  />
-                )}
-                <div className="p-4 flex flex-col flex-grow">
-                  <p className="font-semibold text-lg truncate">{item.name}</p>
-                  <p className="text-gray-500 mb-2 truncate">{item.name_en}</p>
-                  {item.title_1 && (
-                    <p className="text-gray-700 line-clamp-2">{item.title_1}</p>
-                  )}
-                  <Link
-                    href={`vi/visit/${item.id}`}
-                    className="mt-4 inline-block text-[#8a6d46] hover:text-blue-600"
-                  >
-                    Xem chi tiết
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
+  {visits.map((item) => (
+    <Link
+      key={item.id}
+      href={`vi/visit/${item.id}`}
+      className="keen-slider__slide"
+    >
+      <div className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col border border-gray-100 transform transition-transform duration-300 ease-in-out hover:scale-105 cursor-pointer">
+        
+        {item.image_1 && (
+          <img
+            src={`${BASE_URL}/uploads/visit/${item.image_1}`}
+            alt={item.name}
+            className="w-full h-48 object-cover"
+          />
+        )}
+
+        <div className="p-4 flex flex-col flex-grow">
+          <p className="font-semibold text-lg truncate">{item.name}</p>
+          <p className="text-gray-500 mb-2 truncate">{item.name_en}</p>
+
+          {item.title_1 && (
+            <p className="text-gray-700 line-clamp-2">{item.title_1}</p>
+          )}
+
+          <span className="mt-4 inline-block text-[#8a6d46] hover:text-blue-600">
+            Xem chi tiết
+          </span>
+        </div>
+
+      </div>
+    </Link>
+  ))}
+</div>
+
 
           {/* Nút trái */}
           <button
