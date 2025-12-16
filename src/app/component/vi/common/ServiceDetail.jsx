@@ -59,7 +59,13 @@ const ServiceDetail = ({ id }) => {
       const data = await res.json();
 
       if (res.ok) {
-        setMsg("Đặt lịch thành công! Chúng tôi sẽ liên hệ với quý khách trong thời gian sớm nhất.");
+       setMsg(
+  <>
+    Đặt lịch thành công!
+    <br />
+    Chúng tôi sẽ liên hệ với quý khách trong thời gian sớm nhất.
+  </>
+);
         setForm({
           name: "",
           phone: "",
@@ -129,14 +135,14 @@ const ServiceDetail = ({ id }) => {
         </article>
 
         {/* SIDEBAR FORM */}
-        <aside className="sticky w-[120%] top-54 self-start">
+        <aside className="sticky w-[125%] top-54 self-start">
           <div className="bg-white p-5 rounded-xl shadow-md border space-y-4 max-h-[620px] overflow-y-auto">
             <h2 className="text-xl font-semibold border-b pb-2 mb-3 text-gray-800">
               Đặt Lịch Online
             </h2>
 
             {msg && (
-              <p className="text-center text-red-600 font-medium">
+              <p className="text-center text-blue-600 font-medium">
                 {msg}
               </p>
             )}
