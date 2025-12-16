@@ -136,7 +136,7 @@ const ServiceDetail = ({ id }) => {
             </h2>
 
             {msg && (
-              <p className="text-center text-green-600 font-medium">
+              <p className="text-center text-red-600 font-medium">
                 {msg}
               </p>
             )}
